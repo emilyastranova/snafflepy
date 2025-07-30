@@ -64,6 +64,8 @@ def parse_arguments():
             sys.exit(2)
         else:
             options = parser.parse_args()
+            if options.hash and options.hash.startswith(':'):
+                options.hash = options.hash[1:]
             if options.gemini:
                 log.warning("Gemini analysis is enabled. This will drastically slow down the snaffling process.")
             if options.verbose:

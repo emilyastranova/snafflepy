@@ -12,6 +12,10 @@ This tool works by first authenticating to a target machine and, if enabled, usi
     - Directory names
     - File names
     - File content (e.g., regex for credentials, SSNs, private keys)
+- **Gemini-Powered Credential Analysis:** If a file does not match any of the built-in rules, SnafflePy can use Google's Gemini Pro model to analyze the file's content for credentials. This is a powerful feature for discovering credentials that might otherwise be missed.
+    - **Enable with `--gemini`**.
+    - **Warning:** This feature significantly slows down the snaffling process.
+    - Results are saved to `gemini_output.json`.
 - **Customizable Rules:** Comes with a robust set of default rules, but you can easily provide your own custom rule directory to tailor the search to your needs.
 - **Multiple Authentication Methods:** Supports password, NTLM hash, Guest, and NULL session authentication.
 - **Informative Output:** Provides clear, color-coded output indicating which files were found and which were "snaffled" (downloaded), along with the specific rules that were matched.
@@ -66,6 +70,7 @@ options:
   -c, --classification  Enable classification of files (Requires rules!)
   -r RULES, --rules RULES
                         Path to custom rules directory
+  --gemini              Enable Gemini analysis for files that don't match any other rules.
 ```
 
 ## Examples

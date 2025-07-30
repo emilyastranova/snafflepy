@@ -91,7 +91,7 @@ class SMBClient:
                     f'{self.server}: Authenticating as "{self.username}"')
 
                 # pass the hash if requested
-                if self.nthash and not self.password:
+                if self.nthash:
                     self.conn.login(
                         self.username,
                         '',
